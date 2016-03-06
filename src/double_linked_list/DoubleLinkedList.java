@@ -34,24 +34,22 @@ public class DoubleLinkedList {
 	    // Reverses the string
 	    public void reverse()
 	    {
+	    	// swap head and tail
 	    	ListNode curr = head;
+	    	head = tail;
+	    	tail = curr;
+	    	
+	    	// new head = old tail
+	    	ListNode start = head;
 			
-			while (curr != null){
-				ListNode nextNode = curr.next();
-				curr.setNext(curr.prev()); 
-				curr.setPrev(nextNode);
-				
-				if(nextNode != null)
-				{
-					nextNode.setNext(curr);
-				}
-				
+			while (start != null){
 				curr = curr.next();
+				start.setNext(start.prev()); 
+				start.setPrev(curr);
+				start = start.next();
+				
 			}
 			
-			ListNode oldHead = head;
-			head = tail;
-			tail = oldHead;
 	    }
 	    
 	    // Method toString()
@@ -94,8 +92,10 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeFirst(Object o)
 	    {
-		// FIll me in!
-	    }
+				
+				
+		}
+	    
 	    
 	    // Method removeLast(Object o)
 	    //  Removes the last occurrence of the Object o from the list.  If
@@ -105,7 +105,15 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
-		// FIll me in!!
+	    	ListNode temp = head;
+	    	while (temp.next() != null)
+	    	{
+	    		temp = temp.next();
+	    		tail = temp;
+	    		tail.setNext(null);
+	    		
+	    	}
+	    	
 	    }
 	    
 	    
