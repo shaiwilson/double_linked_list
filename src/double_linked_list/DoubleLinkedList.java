@@ -105,14 +105,7 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
-	    	ListNode temp = head;
-	    	while (temp.next() != null)
-	    	{
-	    		temp = temp.next();
-	    		tail = temp;
-	    		tail.setNext(null);
-	    		
-	    	}
+	    	
 	    	
 	    }
 	    
