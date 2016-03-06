@@ -64,8 +64,25 @@ public class DoubleLinkedList {
 	    //  List containing three integers 1, 2, 3:  toString => "[1,2,3]"
 	    public String toString()
 	    {
-		// Fill me in!
-	        return "";
+	    	if (head == null) {
+				
+				return "[]";
+				
+			} else {
+				
+				String result = "[" + head.data();
+				ListNode current = head.next();
+				
+				while (current != null) {
+					
+					result += ", " + current.data();
+					current = current.next();
+					
+				}
+				
+				result += "]";
+				return result;
+			}
 	    }
 	    
 	    
