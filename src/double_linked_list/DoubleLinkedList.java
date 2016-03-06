@@ -106,7 +106,6 @@ public class DoubleLinkedList {
 	    public void removeLast(Object o)
 	    {
 	    	
-	    	
 	    }
 	    
 	    
