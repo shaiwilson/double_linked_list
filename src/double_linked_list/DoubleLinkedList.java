@@ -92,7 +92,25 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeFirst(Object o)
 	    {
-				
+	    	ListNode toFind = head;
+	    	ListNode toPrev = toFind.prev();
+	    	
+	    	Object toDelete;
+//	    	
+//	    	while (toFind != null){
+//	    		
+//	    		toDelete = toFind.data();
+//	    		if (toDelete.equals(o))
+//	    		{
+//	    			// set previous to one node ahead
+//	    			toPrev.setNext(toFind.next());
+//	    		}
+//	    		
+//	    		// keep moving along
+//	    		toPrev = toFind;
+//	    		toFind = toFind.next();
+//	    	}
+	    	
 				
 		}
 	    
@@ -105,7 +123,23 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
+	    	ListNode prev = null;
+	    	ListNode curr = head;
 	    	
+	    	while(curr.next() != null)
+	    	{
+	    		prev = curr;
+	    		curr = curr.next();
+	    	}
+	    	
+	    	
+	    	tail = prev;
+	    	if (tail == null){
+	    		head = null;
+	    	}
+	    	else {
+	    		tail.setNext(null);
+	    	}
 	    }
 	    
 	    
