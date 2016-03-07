@@ -94,27 +94,34 @@ public class DoubleLinkedList {
 	    {
 	 
 	    	ListNode curr = head;
+	    	ListNode prev = null;
 	    	
 	    	// catch the first element case
 	    	if(curr.data().equals(o))
 	    	{
+	    		
 	    		head = curr.next();
 	    	}
 	    	else {
 	    		
 	    		while(curr != null && !curr.data().equals(o))
 	    		{
-	    			
-	    			
-	    			curr = curr.next();
+	    			System.out.println(curr.data());
 	    			if (curr.data().equals(o))
 	    			{
+	    				System.out.println(curr.data());
 	    				// change tail
+	    				ListNode temp1 = curr.next();
 	    				if(curr.next() == null){
-	    					ListNode temp1 = curr.next();
 	    					tail.setNext(null);
 	    				}
+	    				else {
+	    					prev.setNext(temp1);
+	    				}
 	    			}
+	    			
+	    			curr = curr.next();
+	    			prev = curr;
 	    		}
 	    	}
 	    		
@@ -129,36 +136,7 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
-//	    	ListNode prev = null;
-//	    	ListNode curr = head;
-//	    	
-//	    	while(curr.next() != null && !curr.data().equals(o))
-//	    	{
-//	    		prev = curr;
-//	    		curr = curr.next();
-//	    	}
-//	    	
-//	    	if (curr != null)
-//	    	{
-//	    		System.out.println(curr.data());
-//	    		ListNode temp1 = curr.next();
-//	    		System.out.println(temp1.data());
-//	    		
-//	    		
-////	    		prev.setNext(temp1);
-//	    		if (prev == head) {
-//		    		head.setNext(temp1);
-//		    		prev.setNext(temp1);
-//		    	}
-//	    	}
-//
-//	    	
-//	    	if (tail == null){
-//	    		head = null;
-//	    	}
-//	    	else {
-//	    		tail.setNext(null);
-//	    	}
+    	
 	    }
 	    
 	    
