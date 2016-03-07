@@ -92,26 +92,32 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeFirst(Object o)
 	    {
-	    	ListNode toFind = head;
-	    	ListNode toPrev = toFind.prev();
+	 
+	    	ListNode curr = head;
 	    	
-	    	Object toDelete;
-//	    	
-//	    	while (toFind != null){
-//	    		
-//	    		toDelete = toFind.data();
-//	    		if (toDelete.equals(o))
-//	    		{
-//	    			// set previous to one node ahead
-//	    			toPrev.setNext(toFind.next());
-//	    		}
-//	    		
-//	    		// keep moving along
-//	    		toPrev = toFind;
-//	    		toFind = toFind.next();
-//	    	}
-	    	
-				
+	    	// catch the first element case
+	    	if(curr.data().equals(o))
+	    	{
+	    		head = curr.next();
+	    	}
+	    	else {
+	    		
+	    		while(curr != null && !curr.data().equals(o))
+	    		{
+	    			
+	    			
+	    			curr = curr.next();
+	    			if (curr.data().equals(o))
+	    			{
+	    				// change tail
+	    				if(curr.next() == null){
+	    					ListNode temp1 = curr.next();
+	    					tail.setNext(null);
+	    				}
+	    			}
+	    		}
+	    	}
+	    		
 		}
 	    
 	    
@@ -123,23 +129,36 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
-	    	ListNode prev = null;
-	    	ListNode curr = head;
-	    	
-	    	while(curr.next() != null)
-	    	{
-	    		prev = curr;
-	    		curr = curr.next();
-	    	}
-	    	
-	    	
-	    	tail = prev;
-	    	if (tail == null){
-	    		head = null;
-	    	}
-	    	else {
-	    		tail.setNext(null);
-	    	}
+//	    	ListNode prev = null;
+//	    	ListNode curr = head;
+//	    	
+//	    	while(curr.next() != null && !curr.data().equals(o))
+//	    	{
+//	    		prev = curr;
+//	    		curr = curr.next();
+//	    	}
+//	    	
+//	    	if (curr != null)
+//	    	{
+//	    		System.out.println(curr.data());
+//	    		ListNode temp1 = curr.next();
+//	    		System.out.println(temp1.data());
+//	    		
+//	    		
+////	    		prev.setNext(temp1);
+//	    		if (prev == head) {
+//		    		head.setNext(temp1);
+//		    		prev.setNext(temp1);
+//		    	}
+//	    	}
+//
+//	    	
+//	    	if (tail == null){
+//	    		head = null;
+//	    	}
+//	    	else {
+//	    		tail.setNext(null);
+//	    	}
 	    }
 	    
 	    
