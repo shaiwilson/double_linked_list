@@ -99,7 +99,6 @@ public class DoubleLinkedList {
 	    	// catch the first element case
 	    	if(curr.data().equals(o))
 	    	{
-	    		
 	    		head = curr.next();
 	    	}
 	    	else {
@@ -107,6 +106,9 @@ public class DoubleLinkedList {
 	    		while(curr != null && !curr.data().equals(o))
 	    		{
 	    			System.out.println(curr.data());
+	    			curr = curr.next();
+	    		}
+	    			prev = curr;
 	    			if (curr.data().equals(o))
 	    			{
 	    				System.out.println(curr.data());
@@ -118,10 +120,6 @@ public class DoubleLinkedList {
 	    				else {
 	    					prev.setNext(temp1);
 	    				}
-	    			}
-	    			
-	    			curr = curr.next();
-	    			prev = curr;
 	    		}
 	    	}
 	    		
