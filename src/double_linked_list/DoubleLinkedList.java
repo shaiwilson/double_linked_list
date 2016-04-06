@@ -97,6 +97,8 @@ public class DoubleLinkedList {
 	    	ListNode curr = head; // start at begin
 //	    	ListNode occurence = head; // remember last occurrence
 	    	int count = 0; // # of occurrences
+	    	
+	    	// bug u forgot to move this pointer ugh
 	    	ListNode prev = curr.prev();
 	    	
 
@@ -112,20 +114,28 @@ public class DoubleLinkedList {
 	    	while (curr != null){
 	    		
 	    		if(curr.data().equals(o) & count == 0){
-	    			System.out.print("curr data: ");
-	    			System.out.println(curr.data());
 	    			
-	    			prev.setNext(curr.next());
-	    			System.out.print("prev data: ");
-	    			System.out.println(prev.data());
-	    			
-	    			
-//	    			System.out.println(curr.next());
+	    			// find object
+//	    			System.out.print("search data: ");
+//	    			System.out.println(curr.data());
+//	    			
+	    		
+	    			ListNode prevNode = curr.prev();  // hold on to curr.prev
+	    			curr = curr.next(); // move curr to next node
+	    			curr.setPrev(prevNode);
+	    			prevNode.setNext(curr);
+	    			count++;
+//	    			System.out.print("curr prev data: ");
+//	    			System.out.println(curr.prev().data());
+//	    			
+//	    			System.out.print("prev next data: ");
+//	    			System.out.println(prevNode.next().data());
 	    			
 	    		
-	    			count++;
+	    			
 	    			
 	    		}
+	    		
 	    		
 	    		curr = curr.next();
 	    		
