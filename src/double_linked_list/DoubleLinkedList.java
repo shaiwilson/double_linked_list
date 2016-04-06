@@ -92,38 +92,50 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeFirst(Object o)
 	    {
-	 
-	    	ListNode curr = head;
-	    	ListNode prev = null;
+//	    	System.out.println(o);
+	    	int pos = 0; // track pos of current link in the list
+	    	ListNode curr = head; // start at begin
+//	    	ListNode occurence = head; // remember last occurrence
+	    	int count = 0; // # of occurrences
+	    	ListNode prev = curr.prev();
 	    	
-	    	// catch the first element case
-	    	if(curr.data().equals(o))
-	    	{
+
+	    	if (head.data().equals(o)){
+	    	
 	    		head = curr.next();
+	    		head.setPrev(null);
+	    		curr = curr.next();
+	    		count++;
 	    	}
-	    	else {
+	    	
+	    	
+	    	while (curr != null){
 	    		
-	    		while(curr != null && !curr.data().equals(o))
-	    		{
+	    		if(curr.data().equals(o) & count == 0){
+	    			System.out.print("curr data: ");
 	    			System.out.println(curr.data());
-	    			curr = curr.next();
-	    		}
-	    			prev = curr;
-	    			if (curr.data().equals(o))
-	    			{
-	    				System.out.println(curr.data());
-	    				// change tail
-	    				ListNode temp1 = curr.next();
-	    				if(curr.next() == null){
-	    					tail.setNext(null);
-	    				}
-	    				else {
-	    					prev.setNext(temp1);
-	    				}
-	    		}
-	    	}
+	    			
+	    			prev.setNext(curr.next());
+	    			System.out.print("prev data: ");
+	    			System.out.println(prev.data());
+	    			
+	    			
+//	    			System.out.println(curr.next());
+	    			
 	    		
-		}
+	    			count++;
+	    			
+	    		}
+	    		
+	    		curr = curr.next();
+	    		
+	    	
+	    		
+	    	}
+	    	
+
+	    }
+	 
 	    
 	    
 	    // Method removeLast(Object o)
@@ -134,7 +146,9 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
-    	
+	   
+	        	
+
 	    }
 	    
 	    
