@@ -98,8 +98,7 @@ public class DoubleLinkedList {
 //	    	ListNode occurence = head; // remember last occurrence
 	    	int count = 0; // # of occurrences
 	    	
-	    	// bug u forgot to move this pointer ugh
-	    	ListNode prev = curr.prev();
+	    	
 	    	
 
 	    	if (head.data().equals(o)){
@@ -156,9 +155,80 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
-	   
-	        	
+	    	System.out.print("searching for: ");
+	    	System.out.println(o);
+	    	
+	    	int pos = 0; // track pos of current link in the list
+	    	ListNode curr = head; // start at begin
+	    	int count = 0; // # of occurrences
+	    
+	    	
+	    	// check to see if the list has only one item
+	    	
+	    	
+	    	if (tail.data().equals(o)){
+	    		if(head.data() == tail.data())
+		    	{
+		    		head = null;
+		    		tail = null;
+		    	}
+	    		else {
+	    			
+	    			curr = tail;
+		    		ListNode tailprev = curr.prev();
+		    		System.out.println(tailprev.data());
+		    		tail = curr.prev();
+		    		tail.setNext(null);
+		    		tail.setPrev(tailprev);	    			
+		
+	    		}
 
+	    	}
+	    	
+	    	
+	    	while (curr != null){
+	    		
+	    		if(curr.data().equals(o)){
+
+	    		
+	    			pos = count;
+//	    			System.out.print("pos: ");
+//	    			System.out.println(pos);
+//	    			
+//	    			System.out.print("curr data: ");
+//	    			System.out.println(curr.data());
+//	    			
+	    			
+	    		}
+	    		
+	    		curr = curr.next();
+	    		count++;
+	    	
+	    	}
+	    	
+//	    	ListNode curr2 = head;
+//	    	System.out.print("object data: ");
+//			System.out.println(o);
+//			
+//	    	System.out.println(pos);
+//	    	
+//	    	for (int i = 0; i <= pos; i++)
+//	    	{
+//	    		if (curr2 != null){
+//	    	    	System.out.print(curr2.data());
+//	    	    	curr2 = curr2.next();
+//	    		}
+//	    	}
+//	    	
+
+	    	
+	    	
+
+//   			ListNode prevNode = curr2.prev();  // hold on to curr.prev
+//   			curr2 = curr2.next(); // move curr to next node
+//   			curr2.setPrev(prevNode);
+//			prevNode.setNext(curr2);
+		
 	    }
 	    
 	    
