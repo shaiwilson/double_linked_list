@@ -92,55 +92,60 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeFirst(Object o)
 	    {
-//	    	System.out.println(o);
+
 	    	int pos = 0; // track pos of current link in the list
 	    	ListNode curr = head; // start at begin
-//	    	ListNode occurence = head; // remember last occurrence
 	    	int count = 0; // # of occurrences
 	    	
+	    
+	    	if(head.data() == tail.data())
+	    	{
+	    		head = null;
+	    		tail = null;
+	    		count++;
+	    	}
 	    	
-	    	
-
-	    	if (head.data().equals(o)){
-	    	
+	    	else if (head.data().equals(o)){
+		    	
 	    		head = curr.next();
 	    		head.setPrev(null);
 	    		curr = curr.next();
 	    		count++;
 	    	}
 	    	
+	    	else if (tail.data().equals(o)){
+	    			
+	    			curr = tail;
+		    		ListNode tailprev = curr.prev();
+		    		tail = curr.prev();
+		    		tail.setNext(null);
+		    		tail.setPrev(tailprev);	  
+		    		count++;
+
+	    	}
 	    	
-	    	while (curr != null){
-	    		
-	    		if(curr.data().equals(o) & count == 0){
-	    			
-	    			// find object
-//	    			System.out.print("search data: ");
-//	    			System.out.println(curr.data());
-//	    			
-	    		
-	    			ListNode prevNode = curr.prev();  // hold on to curr.prev
-	    			curr = curr.next(); // move curr to next node
-	    			curr.setPrev(prevNode);
-	    			prevNode.setNext(curr);
-	    			count++;
-//	    			System.out.print("curr prev data: ");
-//	    			System.out.println(curr.prev().data());
-//	    			
-//	    			System.out.print("prev next data: ");
-//	    			System.out.println(prevNode.next().data());
-	    			
-	    		
-	    			
-	    			
-	    		}
-	    		
-	    		
-	    		curr = curr.next();
-	    		
-	    	
+	    	if(count == 0){
+	    		while (curr != null){
+		    		
+		    		if(curr.data().equals(o)){
+		    				
+		    			ListNode prevNode = curr.prev();  // hold on to curr.prev
+		    			curr = curr.next(); // move curr to next node
+		    			curr.setPrev(prevNode);
+		    			prevNode.setNext(curr);
+		    			count++;
+			
+		    		}
+		    		
+		    		
+		    		curr = curr.next();
+
+		    		
+		    	}	
 	    		
 	    	}
+	    	
+	    	
 	    	
 
 	    }
@@ -155,79 +160,76 @@ public class DoubleLinkedList {
 	    //    code as possible!
 	    public void removeLast(Object o)
 	    {
-	    	System.out.print("searching for: ");
-	    	System.out.println(o);
+//	    	System.out.print("searching for: ");
+//	    	System.out.println(o);
 	    	
 	    	int pos = 0; // track pos of current link in the list
 	    	ListNode curr = head; // start at begin
 	    	int count = 0; // # of occurrences
+	    	boolean found = false;
 	    
-	    	
 	    	// check to see if the list has only one item
+	    	// check to see if the last item is the item to remove
 	    	
+	    	if(head.data() == tail.data())
+	    	{
+	    		head = null;
+	    		tail = null;
+	    		found = true;
+	    	}
 	    	
-	    	if (tail.data().equals(o)){
-	    		if(head.data() == tail.data())
-		    	{
-		    		head = null;
-		    		tail = null;
-		    	}
-	    		else {
+	    	else if (head.data().equals(o)){
+		    	
+	    		head = curr.next();
+	    		head.setPrev(null);
+	    		curr = curr.next();
+	    		found = true;
+	    	}
+	    	
+	    	else if (tail.data().equals(o)){
 	    			
 	    			curr = tail;
 		    		ListNode tailprev = curr.prev();
-		    		System.out.println(tailprev.data());
 		    		tail = curr.prev();
 		    		tail.setNext(null);
-		    		tail.setPrev(tailprev);	    			
-		
-	    		}
+		    		tail.setPrev(tailprev);	  
+		    		found = true;
 
 	    	}
 	    	
-	    	
-	    	while (curr != null){
+	    	if (!found){
+	    		while (curr != null){
+		    		
+		    		if(curr.data().equals(o)){
+		    			
+		    			pos = count;	    			
+		    		}
+		    		
+		    		curr = curr.next();
+		    		count++;
+		    	
+		    	}
+		    	
+		    	ListNode curr2 = head;
+		    	int loc = 0;
+		    	
+		    	for (int i = 0; i <= pos; i++)
+		    	{
+		    		curr2 = curr2.next();
+		    		loc++;
+		    		
+		    		if (curr2.data().equals(o) & loc == pos){
+		    			
+			   			ListNode prevNode = curr2.prev();  // hold on to curr.prev
+			   			curr2 = curr2.next(); // move curr to next node
+			   			curr2.setPrev(prevNode);
+						prevNode.setNext(curr2);
+		    			
+		    	    	
+		    		}
+		    	}
 	    		
-	    		if(curr.data().equals(o)){
-
-	    		
-	    			pos = count;
-//	    			System.out.print("pos: ");
-//	    			System.out.println(pos);
-//	    			
-//	    			System.out.print("curr data: ");
-//	    			System.out.println(curr.data());
-//	    			
-	    			
-	    		}
-	    		
-	    		curr = curr.next();
-	    		count++;
-	    	
 	    	}
-	    	
-//	    	ListNode curr2 = head;
-//	    	System.out.print("object data: ");
-//			System.out.println(o);
-//			
-//	    	System.out.println(pos);
-//	    	
-//	    	for (int i = 0; i <= pos; i++)
-//	    	{
-//	    		if (curr2 != null){
-//	    	    	System.out.print(curr2.data());
-//	    	    	curr2 = curr2.next();
-//	    		}
-//	    	}
-//	    	
-
-	    	
-	    	
-
-//   			ListNode prevNode = curr2.prev();  // hold on to curr.prev
-//   			curr2 = curr2.next(); // move curr to next node
-//   			curr2.setPrev(prevNode);
-//			prevNode.setNext(curr2);
 		
 	    }
 	    
