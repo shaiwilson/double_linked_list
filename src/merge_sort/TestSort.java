@@ -10,7 +10,100 @@ public class TestSort {
 	
 	public static ListNode mergeSort(ListNode list)
 	{
-		return null;					
+		
+		if (list == null || list.next == null)
+		{
+			return list;
+		}
+		
+		ListNode first = list;
+		ListNode second = list.next;
+		
+		while((second != null) && (second.next != null))
+		{
+			list = list.next;
+			second = second.next.next;
+			
+		}
+		second = list .next;
+		list.next = null;
+		
+		return null;
+		
+//		return merge(mergeSort(first), mergeSort(second));
+		
+					
+	}
+	
+	public static ListNode merge(ListNode first, ListNode second)
+	{
+		ListNode tmp = new ListNode();
+		ListNode head = tmp;
+		ListNode result = head;
+		
+//		while((first != null) && (second != null))
+//		{
+//			if(first.data <= second.data)
+//			{
+//				result.next = first;
+//				result = first;
+//				first = first.next;
+//			}
+//			
+//			else
+//			{
+//				result.next = second;
+//				result = second;
+//				second = second.next;
+//			}
+//		}
+		
+//		if (first == null)
+//		{
+//			result.next = second;
+//		}
+//		else 
+//		{
+//			result.next = first;
+//		}
+		
+		return head.next;
+		
+	}
+	
+	
+	
+
+	public static ListNode LLsplit(ListNode list){
+		
+		// iterative solution
+		
+		ListNode fast = list;
+		ListNode slow = list;
+		
+		while (fast.next != null && fast.next.next != null)
+		{
+			fast = slow.next;
+			slow.next = null;
+			
+		}
+		
+		return slow;
+		
+// 		recursive solution		
+//		ListNode curr;
+//		
+//		if ((list == null) || (list.next == null)){
+//			return null;
+//		}
+//		
+//		curr = list.next;
+//		System.out.println(curr.data);
+//		list.next = curr.next;
+//		curr.next = split(list.next);
+//		
+//		
+//		return curr;
 	}
 	
 	
