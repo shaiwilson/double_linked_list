@@ -11,8 +11,6 @@ public class ListNode {
 	
 	public ListNode()
 	{
-		this.data = null;
-		this.next = null;
 	}
 	
 	public int data;
